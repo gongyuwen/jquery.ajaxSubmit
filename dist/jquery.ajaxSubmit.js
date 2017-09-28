@@ -573,17 +573,19 @@
         }
         ajaxSubmitter._delegate( e );
     }
-    function Plugin( options )
+    function Plugin()
     {
+    	var args = arguments;
+    	
+    	var options = args[0] || {};
+    	 
         // If nothing is selected, return nothing; can't chain anyway
         if ( !this.length ) {
             if ( options && options.debug  ) {
                 $.ajaxSubmitter._console( "Nothing selected, can't submit, returning nothing.", 'warn' );
             }
             return;
-        }
-
-        var args = arguments;
+        }        
 
         this.each( function(){
 
