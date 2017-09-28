@@ -242,7 +242,6 @@
                 if( this.settings.defBeforeSend )
                     result = this.settings.beforeSendFunc.apply( this, arguments );
 
-
                 var e = $.Event( 'beforeSend.ajaxSubmit', arguments );
 
                 $( this.element ).trigger( e );
@@ -530,9 +529,9 @@
         var arrs = [];
 
         $.each( datas, function( key, value ){
-            arrs.push( key + '=' + value );
+            arrs.push( key + '=' + encodeURI( value ) );
         });
-        return encodeURIComponent( arrs.join('&') );
+        return arrs.join('&');
     }
     $.ajaxSubmitter.unserialize = function( str )
     {
@@ -564,7 +563,7 @@
 
         var options = arguments[2] ? arguments[2] : {};
 
-        var ajaxSubmitter = $.data( this, 'ajaxSubmitter' );
+        var ajaxSubmitter = $.data( context, 'ajaxSubmitter' );
 
         if( !ajaxSubmitter )
         {
