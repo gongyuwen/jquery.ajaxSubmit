@@ -1,0 +1,24 @@
+{
+  "name": "jquery.ajaxsubmit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/jquery.ajaxsubmit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gongyuwen/jquery.ajaxSubmit.git"
+  },
+  "keywords": [
+    "jquery",
+    "plugin",
+    "ajaxsubmit"
+  ],
+  "author": "gongyuwen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gongyuwen/jquery.ajaxSubmit/issues"
+  },
+  "homepage": "https://github.com/gongyuwen/jquery.ajaxSubmit#readme"
+}
