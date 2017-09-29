@@ -27,7 +27,7 @@
                 var holdElements = element.is('form') ? $('[type=submit]:visible', element) : element;
 
                 holdElements.each( function(){
-                    if( this.nodeName == 'BUTTON' )
+                    if( this.nodeName == 'BUTTON' && self.settings.icon )
                     {
                         var icon = loadingimgs[ self.settings.icon ] ? getScriptPath() + loadingimgs[ self.settings.icon ] : self.settings.icon;
 
@@ -251,7 +251,7 @@
             _complete: function()
             {
                 if( this.settings.defComplete )
-                    return this.settings.completeFunc.call( this, arguments );
+                	this.settings.completeFunc.call( this, arguments );
 
                 var e = $.Event( 'complete.ajaxSubmit', arguments );
 
@@ -625,7 +625,7 @@
         'danger': 'img/danger.gif'
     };
     var getScriptPath = function() {
-        var src = $("script[src*='jquery.ajaxSubmit']").prop('src');
+        var src = $("script[src*='jquery.ajaxsubmit']").prop('src');
 
         return src.replace( /[\w.]+$/, '' );
     }
