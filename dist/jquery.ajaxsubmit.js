@@ -200,6 +200,8 @@
                             ajaxSubmitter.datas = element.serialize();
                     }
                 }
+                else if( ajaxSubmitter.datas == false )
+                	return false;
 
                 if( settings.uploadFields )
                 {
