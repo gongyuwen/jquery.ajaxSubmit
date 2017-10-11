@@ -184,7 +184,12 @@
                     ajaxSubmitter.additionalDatas = settings.additional;
 
                 if( $.isFunction( settings.getPostDatas ) )
+                {
                     ajaxSubmitter.datas = settings.getPostDatas.call( ajaxSubmitter, element );
+
+                    if( ajaxSubmitter.datas == false )
+                        return false;
+                }
                 else
                     ajaxSubmitter.datas = settings.getPostDatas;
 
@@ -200,8 +205,6 @@
                             ajaxSubmitter.datas = element.serialize();
                     }
                 }
-                else if( ajaxSubmitter.datas == false )
-                	return false;
 
                 if( settings.uploadFields )
                 {
@@ -291,10 +294,6 @@
                     beforeSend: function( xhr, settings )
                     {
                         return self._beforeSend( xhr, settings );
-                    },
-                    complete: function( xhr, status )
-                    {
-                        self._complete( xhr, status );
                     }
                 };
 
@@ -303,7 +302,13 @@
                         ajaxSettings[ key ] = settings[ key ];
                 });
 
-                return $.ajax( ajaxSettings );
+                var task = $.ajax( ajaxSettings );
+
+                task.always( function ( response, status ) {
+                    self._complete( response, status );
+                });
+
+                return task;
             },
             _ajaxWithFiles: function( file_inputs ){
 
